@@ -48,17 +48,19 @@ export default class UserDevices extends Component {
         <Table>
           <TableHeader>
             <TableColumn width="3%"/>
-            <TableColumn width="70%">{languageDictionary.deviceNameColumnHeader || 'Device'}</TableColumn>
+            <TableColumn width="35%">{languageDictionary.clientNameColumnHeader || 'Client'}</TableColumn>
+            <TableColumn width="35%">{languageDictionary.deviceNameColumnHeader || 'Device'}</TableColumn>
             <TableColumn width="27%">
-              {languageDictionary.deviceNumberTokensColumnHeader || '# of Tokens/Public Keys'}
+              {languageDictionary.deviceNumberTokensColumnHeader || 'Number of Refresh Tokens'}
             </TableColumn>
           </TableHeader>
           <TableBody>
             {Object.keys(devices).sort().map((device) =>
               <TableRow key={device}>
                 <TableIconCell color="green" icon="243"/>
-                <TableTextCell>{device}</TableTextCell>
-                <TableTextCell>{devices[device]}</TableTextCell>
+                <TableTextCell>{devices[device].clientName}</TableTextCell>
+                <TableTextCell>{devices[device].deviceName}</TableTextCell>
+                <TableTextCell>{devices[device].count}</TableTextCell>
               </TableRow>
             )}
           </TableBody>
